@@ -1,4 +1,3 @@
-
 import path from "path";
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
@@ -44,6 +43,14 @@ export default defineConfig({
 		syntaxHighlight: 'shiki',
 		shikiConfig: { theme: 'github-light' },
 	},
-	vite: { resolve: { alias: { "@": path.resolve(__dirname, "./src") } } },
+	// --- START: MODIFICATION ---
+	vite: {
+		resolve: { alias: { "@": path.resolve(__dirname, "./src") } },
+		// Add this 'define' property
+		define: {
+			'__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': 'false'
+		}
+	},
+	// --- END: MODIFICATION ---
 	server: { host: '0.0.0.0' }
 });
