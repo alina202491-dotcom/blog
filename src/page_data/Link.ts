@@ -76,10 +76,16 @@ export default {
       "descr": "分享技术与科技生活"
     },
     {
+      "name": "Cleves",
+      "link": "https://cleves.me",
+      "avatar": "https://cleves.me/avatar.jpeg",
+      "descr": "A web developer who loves creating."
+    },
+    {
       "name": "硅基漫游指南",
       "link": "https://blog.helong.online",
-      "avatar": "https://oss.helong.online/bucket-IMG/bea2394fef15b88de49ae37707b3c1b86d7dbc2035a752ef2581a8b6cb3b2e8c.png",
-      "descr": "纸鹿至麓不知路，支炉制露不止漉"
+      "avatar": "https://blog.helong.online/favicon.png",
+      "descr": "Face life with hope."
     }
   ]
 }
