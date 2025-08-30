@@ -30,7 +30,7 @@ export default {
     {
       "name": "二叉树树",
       "link": "https://2x.nz/",
-      "avatar": "https://favicon.im/2x.nz?larger=true",
+      "avatar": "https://oss.helong.online/bucket-IMG/bea2394fef15b88de49ae37707b3c1b86d7dbc2035a752ef2581a8b6cb3b2e8c.png",
       "descr": "爱你所爱~ ❤"
     },
     {
