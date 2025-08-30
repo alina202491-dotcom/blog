@@ -30,7 +30,7 @@ export default {
     {
       "name": "二叉树树",
       "link": "https://2x.nz/",
-      "avatar": "https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0",
+      "avatar": "https://avatars.githubusercontent.com/u/180811437?v=4",
       "descr": "爱你所爱~ ❤"
     },
     {
