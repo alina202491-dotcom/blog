@@ -30,7 +30,7 @@ export default {
     {
       "name": "二叉树树",
       "link": "https://2x.nz/",
-      "avatar": "https://oss.helong.online/bucket-IMG/bea2394fef15b88de49ae37707b3c1b86d7dbc2035a752ef2581a8b6cb3b2e8c.png",
+      "avatar": "https://q2.qlogo.cn/headimg_dl?dst_uin=2726730791&spec=0",
       "descr": "爱你所爱~ ❤"
     },
     {
@@ -84,7 +84,7 @@ export default {
     {
       "name": "硅基漫游指南",
       "link": "https://blog.helong.online",
-      "avatar": "https://blog.helong.online/favicon.png",
+      "avatar": "https://oss.helong.online/bucket-IMG/bea2394fef15b88de49ae37707b3c1b86d7dbc2035a752ef2581a8b6cb3b2e8c.png",
       "descr": "Face life with hope."
     }
   ]
