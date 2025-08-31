@@ -1,6 +1,7 @@
 export default {
   // API 接口请求优先，数据格式保持和 data 一致
-  api: '',
+  // 优先使用 Cloudflare Pages Function /friends，无法使用时回退到 /friends.json
+  api: '/api/friends',
   // api 为空则使用 data 静态数据
   data: [
     {
