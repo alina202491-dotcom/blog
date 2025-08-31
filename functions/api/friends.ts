@@ -65,14 +65,14 @@ export const onRequestGet: PagesFunction = async (context) => {
           const picked = items
             .map((i: any) => ({ ...normalize(i, src.name), name: src.name, site: src.site }))
             .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .slice(0, 3);
+            .slice(0, 8);
           timeline.push(...picked);
         } else if (json.feed?.entry) {
           const entries = Array.isArray(json.feed.entry) ? json.feed.entry : [json.feed.entry];
           const picked = entries
             .map((i: any) => ({ ...normalize(i, src.name), name: src.name, site: src.site }))
             .sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime())
-            .slice(0, 3);
+            .slice(0, 8);
           timeline.push(...picked);
         }
       } catch (e) {
