@@ -106,106 +106,42 @@
 
         // 圈子
         &.friends-main {
-          display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
 
-          &>.vh-space-loading {
-            background-color: var(--vh-white-color);
-          }
+          &>.vh-space-loading { background-color: var(--vh-white-color); grid-column: 1 / -1; }
 
-          &>article {
+          &>.friend-card {
             box-sizing: border-box;
             padding: 1rem;
-            width: 100%;
-            height: max-content;
             border-radius: 0.5rem;
             box-shadow: var(--vh-box-shadow);
-            background: var(--vh-white-color) linear-gradient(90deg, var(--vh-font-6), var(--vh-white-color)) no-repeat 100% 100% / 0 1px;
-            background-position: 0 100%;
-            background-size: 0 100%;
-            transition: .7s cubic-bezier(.6, .1, 0, 1), background-position 0s;
-            overflow: hidden;
+            background: var(--vh-white-color);
+            display: flex;
+            flex-direction: column;
+            gap: 0.68rem;
 
-            &:hover {
-              background-size: 100% 100%;
-            }
-
-            &>a {
+            &>.friend-head {
               display: flex;
-              flex-direction: column;
-              gap: 0.5rem;
-              width: 100%;
-              height: max-content;
+              align-items: center;
+              gap: 0.66rem;
 
-              &>header {
-                &>h2 {
-                  margin: 0;
-                  font-size: 1.08rem;
-
-                  &::before {
-                    display: none;
-                  }
-                }
-              }
-
-              &>p {
-                padding: 0;
-                color: var(--vh-font-66);
-                font-size: 0.875rem;
-                line-height: 1.8;
-              }
-
-              &>footer {
-                box-sizing: border-box;
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                height: max-content;
-                overflow: hidden;
-
-                &>span,
-                &>time {
-                  box-sizing: border-box;
-                  display: flex;
-                  align-items: center;
-                  gap: 0.5rem;
-                  height: max-content;
-                  font-size: 0.8rem;
-                  overflow: hidden;
-
-                  &>em {
-                    font-style: normal;
-                    flex: 1;
-                  }
-
-                  &>img {
-                    box-sizing: border-box;
-                    padding: 0.188rem;
-                    flex-shrink: 0;
-                    width: 1.88rem;
-                    height: 1.88rem;
-                    object-fit: cover;
-                    border: 1px solid var(--vh-font-16);
-                    border-radius: 50%;
-                    background-color: var(--vh-white-color);
-                    overflow: hidden;
-                  }
-                }
-
-                &>span {
-                  flex: 1;
-                }
-
-                &>time {
-                  flex-shrink: 0;
-                  width: max-content;
-                  padding: 0.28rem 0.5rem;
-                  background: var(--vh-font-6);
-                  border-radius: 0.8rem;
-                }
+              &>a { display: flex; align-items: center; gap: 0.66rem; }
+              &>.name, & a>.name { margin: 0; font-size: 1.02rem; }
+              &>.avatar, & a>.avatar {
+                width: 2.2rem;
+                height: 2.2rem;
+                border-radius: 50%;
+                border: 1px solid var(--vh-font-16);
+                background: var(--vh-white-color);
+                object-fit: cover;
               }
             }
+
+            &>.title { font-weight: 700; }
+            &>p { color: var(--vh-font-66); }
+            &>footer>time { font-size: 0.75rem; color: var(--vh-font-66); }
           }
         }
 
