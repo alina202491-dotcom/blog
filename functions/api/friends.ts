@@ -83,19 +83,7 @@ export const onRequestGet: PagesFunction = async (context) => {
     timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     return new Response(JSON.stringify(timeline), { headers: { 'content-type': 'application/json', 'cache-control': 'max-age=300' } });
   } catch (e) {
-    // fallback to static json -> flatten to timeline
-    try {
-      const url = new URL('/friends.json', context.request.url).toString();
-      const res = await fetch(url, { headers: { 'cache-control': 'no-cache' } });
-      const groups = await res.json();
-      let timeline: any[] = [];
-      if (Array.isArray(groups)) {
-        timeline = groups.flatMap((g: any) => (g.items || []).map((i: any) => ({ ...i, name: g.name, site: g.site })));
-      }
-      timeline.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-      return new Response(JSON.stringify(timeline), { headers: { 'content-type': 'application/json', 'cache-control': 'no-cache' } });
-    } catch (err) {
-      return new Response(JSON.stringify([]), { headers: { 'content-type': 'application/json', 'cache-control': 'no-cache' } });
-    }
+    // 不再回退到静态文件，直接返回空数组并在前端提示
+    return new Response(JSON.stringify([]), { headers: { 'content-type': 'application/json', 'cache-control': 'no-cache' }, status: 200 });
   }
 };
