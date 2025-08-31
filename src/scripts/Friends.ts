@@ -11,15 +11,8 @@ const FriendsInit = async (data: any) => {
 	try {
 		let res = data;
 		if (typeof data === 'string') {
-			// 优先请求 API
+			// 仅请求 API，不再回退到静态 JSON
 			res = await $GET(data);
-			// 失败或返回非数组则回退到静态 JSON，并在前端扁平化为时间线
-			if (!Array.isArray(res)) {
-				const groups = await $GET('/friends.json');
-				if (Array.isArray(groups)) {
-					res = groups.flatMap((g: any) => (g.items || []).map((i: any) => ({ ...i, name: g.name, site: g.site })));
-				}
-			}
 		}
 		if (!Array.isArray(res)) throw new Error('friends data invalid');
 		// 统一按文章时间排序
