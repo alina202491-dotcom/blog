@@ -25,6 +25,16 @@
     "feed": "https://www.2x.nz/rss.xml"
   },
   {
+    "name": "無名小栈",
+    "site": "https://blog.imsyy.top",
+    "feed": "https://blog.imsyy.top/rss.xml"
+  },
+  {
+    "name": "LineXic书屋",
+    "site": "https://www.linexic.top",
+    "feed": "https://www.linexic.top/rss.xml"
+  },
+  {
     "name": "清羽飞扬",
     "site": "https://blog.liushen.fun",
     "feed": "https://blog.liushen.fun/atom.xml"
