@@ -11,9 +11,43 @@ const FriendsInit = async (data: any) => {
 	try {
 		let res = data;
 		if (typeof data === 'string') {
-			res = await $GET(api);
+			// 优先请求 API
+			res = await $GET(data);
+			// 失败或返回非数组则回退到静态 JSON，并在前端扁平化为时间线
+			if (!Array.isArray(res)) {
+				const groups = await $GET('/friends.json');
+				if (Array.isArray(groups)) {
+					res = groups.flatMap((g: any) => (g.items || []).map((i: any) => ({ ...i, name: g.name, site: g.site })));
+				}
+			}
 		}
-		friendsDOM.innerHTML = res.map((i: any) => `<article><a href="${i.link}" target="_blank" rel="noopener nofollow"><header><h2>${i.title}</h2></header><p class="vh-ellipsis line-2">${i.content}</p><footer><span><img src="https://icon.bqb.cool/?url=${i.link.split('//')[1].split('/')[0]}" /><em class="vh-ellipsis">${i.auther}</em></span><time>${fmtDate(i.date, false)}前</time></footer></a></article>`).join('');
+		if (!Array.isArray(res)) throw new Error('friends data invalid');
+		// 统一按文章时间排序
+		res.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+		// 渲染为时间线卡片：每条文章一个卡片，展示作者头像、标题、摘要、时间（不展示封面）
+		friendsDOM.innerHTML = res.map((i: any) => {
+			const domain = (i.site || i.link)?.split('//')[1]?.split('/')[0] || '';
+			const avatar = `https://icon.bqb.cool/?url=${domain}`;
+			const author = i.auther || i.name || domain;
+			const site = i.site || i.link;
+			return `
+				<article class="friend-card">
+					<header class="friend-head">
+						<a href="${site}" target="_blank" rel="noopener nofollow">
+							<img class="avatar" src="/assets/images/lazy-loading.webp" data-vh-lz-src="${avatar}" alt="${author}" />
+							<h3 class="name">${author}</h3>
+						</a>
+					</header>
+					<a href="${i.link}" target="_blank" rel="noopener nofollow" title="${i.title}">
+						<div class="vh-ellipsis line-2 title">${i.title}</div>
+					</a>
+					<p class="vh-ellipsis line-3">${i.content || ''}</p>
+					<footer>
+						<time>${fmtDate(i.date, false)}前</time>
+					</footer>
+				</article>
+			`;
+		}).join('');
 		// 图片懒加载
 		vhLzImgInit();
 	} catch {
