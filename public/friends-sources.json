@@ -35,6 +35,11 @@
     "feed": "https://www.linexic.top/rss.xml"
   },
   {
+    "name": "CM喂饭",
+    "site": "https://blog.cmliussss.com",
+    "feed": "https://blog.cmliussss.com/atom.xml"
+  },
+  {
     "name": "清羽飞扬",
     "site": "https://blog.liushen.fun",
     "feed": "https://blog.liushen.fun/atom.xml"
