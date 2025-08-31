@@ -1,7 +1,9 @@
 {
   "name": "vh-astro",
   "compatibility_date": "2025-03-31",
+  "main": "functions/worker.ts",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   }
 }
