@@ -1,0 +1,32 @@
+[
+  {
+    "name": "韩小韩博客",
+    "site": "https://www.vvhan.com",
+    "feed": "https://www.vvhan.com/rss.xml"
+  },
+  {
+    "name": "硅基漫游指南",
+    "site": "https://blog.helong.online",
+    "feed": "https://blog.helong.online/atom.xml"
+  },
+  {
+    "name": "cleves",
+    "site": "https://cleves.me",
+    "feed": "https://cleves.me/rss.xml"
+  },
+  {
+    "name": "焕昭君",
+    "site": "https://blog.huan666.de",
+    "feed": "https://blog.huan666.de/index.xml"
+  },
+  {
+    "name": "二叉树树",
+    "site": "https://www.2x.nz",
+    "feed": "https://www.2x.nz/rss.xml"
+  },
+  {
+    "name": "清羽飞扬",
+    "site": "https://blog.liushen.fun",
+    "feed": "https://blog.liushen.fun/atom.xml"
+  }
+]
