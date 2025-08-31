@@ -20,15 +20,23 @@ function normalize(item: any, author: string) {
   };
 }
 
-async function handleFriends(request: Request): Promise<Response> {
-  const sourcesUrl = new URL('/friends-sources.json', request.url).toString();
-  const res = await fetch(sourcesUrl, { headers: { 'cache-control': 'no-cache' } });
-  if (!res.ok) return new Response('[]', { headers: { 'content-type': 'application/json' } });
-  const sources = await res.json();
+async function handleFriends(request: Request, env: Env): Promise<Response> {
+  const assetsUrl = new URL('/friends-sources.json', request.url).toString();
+  // 优先从静态资源绑定中读取，避免递归到同一 Worker 导致 1101
+  let sources: any[] = [];
+  try {
+    const req = new Request(assetsUrl, { headers: { 'cache-control': 'no-cache' } });
+    const res = env.ASSETS ? await env.ASSETS.fetch(req) : await fetch(req);
+    if (!res.ok) return new Response('[]', { headers: { 'content-type': 'application/json' } });
+    sources = await res.json();
+  } catch {
+    return new Response('[]', { headers: { 'content-type': 'application/json' } });
+  }
   const timeline: any[] = [];
   await Promise.all(sources.map(async (src: any) => {
     try {
-      const resp = await fetch(src.feed, { headers: { 'user-agent': 'friends-cf/1.0' } });
+      const feedUrl = String(src.feed || '').startsWith('http') ? src.feed : `https://${src.feed}`;
+      const resp = await fetch(feedUrl, { headers: { 'user-agent': 'friends-cf/1.0' } });
       if (!resp.ok) throw new Error('feed fail');
       const xml = await resp.text();
       const json = xmlParser.parse(xml);
@@ -57,7 +65,7 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     if (url.pathname === '/api/friends') {
-      return handleFriends(request);
+      return handleFriends(request, env);
     }
     // fallback to static assets (Pages/Workers Sites binding)
     return env.ASSETS.fetch(request);
