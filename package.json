@@ -8,7 +8,6 @@
     "preview": "astro preview",
     "astro": "astro",
     "newpost": "node ./script/newpost.js",
-    "friends": "node ./script/friends-aggregate.mjs",
     "offdev": "astro preferences disable devToolbar",
     "ondev": "astro preferences enable devToolbar"
   },
@@ -30,7 +29,6 @@
     "@waline/client": "^3.5.7",
     "cheerio": "^1.0.0",
     "fast-xml-parser": "^4.5.0",
-    "node-fetch": "^3.3.2",
     "dayjs": "^1.11.13",
     "less": "^4.3.0",
     "mdast-util-to-string": "^4.0.0",
