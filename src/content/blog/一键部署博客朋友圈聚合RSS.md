@@ -7,7 +7,7 @@ tags:
   - 博客
 
 id: RSS
-cover: 一键部署博客朋友圈聚合RSS
+cover: https://iili.io/KfzVDvf.png
 recommend: true
 ---
 
